@@ -3,7 +3,7 @@
 [![React Version](https://img.shields.io/badge/React-18.0.0-blue.svg)](https://reactjs.org/)
 [![Node.js Version](https://img.shields.io/badge/Node.js-14.0.0+-green.svg)](https://nodejs.org/)
 
-# Histsci Project: Obedience to Authority Survey
+# HISTSCI 1740 Project: Obedience to Authority Survey
 
 
 This project is a React-based web application designed to simulate Stanley Milgram's famous obedience experiments. The survey explores participants' tendencies to obey authority and their moral decision-making in challenging scenarios. The app dynamically evaluates user responses and provides insights inspired by Milgram's studies.
