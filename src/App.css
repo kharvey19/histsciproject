@@ -54,10 +54,30 @@
 
 .background-container {
   background-image: url('/Users/katherineharvey/Desktop/histsci/public/milgirim_background.jpg'); /* Path to your image */
-  background-size: cover; /* Ensures the image covers the entire container */
-  background-repeat: no-repeat; /* Prevents tiling */
-  background-position: center; /* Centers the image */
+  background-size: auto; /* Keeps the original size of the image */
+  background-repeat: repeat; /* Allows the image to tile/repeat */
+  background-position: top left; /* Starts the tiling from the top-left corner */
   height: 100vh; /* Sets the height to fill the viewport */
   width: 100%; /* Makes it span the entire width */
 }
 
+
+
+.surveybutton {
+  background-color: #0096c7; /* Main button color */
+  color: #fff; /* Text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.surveybutton:hover {
+  background-color: rgba(0, 150, 199, 0.8); /* More opaque on hover */
+}
+
+strong {
+  color: #007bff; /* Replace with your desired color */
+}

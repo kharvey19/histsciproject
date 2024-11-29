@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-
-
+import Score from "react-score-indicator";
+import CategoryCards from "./Carousel.js"
 
 const ResultsPage = () => {
   const location = useLocation();
@@ -215,14 +215,30 @@ const ResultsPage = () => {
   }
 
   return (
-    <div style={styles.container}>
-      <h1>Survey Results</h1>
+    <div className="background-container" style={styles.container}>
+      {/* <div style={styles.card}> */}
+      <h1 className="love-ya-like-a-sister-regular">Survey Results</h1>
       <p>Your responses have been analyzed based on Milgram's studies. Here are your results:</p>
-
+      {/* </div> */}
+      <div style={styles.sideBySideContainer}>
       <div style={styles.card}>
-        <h2>Overall Assessment</h2>
-        <p><strong>Overall Score:</strong> {overallScore.toFixed(2)} / 4</p>
-        <p><strong>Overall Category:</strong> {overallCategory}</p>
+        <h2 className="love-ya-like-a-sister-regular">Overall Assessment</h2>
+        {/* <p><strong>Overall Score:</strong> {overallScore.toFixed(2)} / 4</p> */}
+        <p style={{ fontWeight: 'bold'}}>Overall Score </p>
+        <Score
+          value={((overallScore / 4) * 100).toFixed(2)} // Map overall score to percentage
+          maxValue={100}
+          borderWidth={10}
+          gap={15}
+          maxAngle={180}
+          width={160}
+          lineWidth={20}
+        />
+
+        <p>
+          <span style={{ fontWeight: 'bold' }}>Overall Category:</span> {overallCategory}
+        </p>
+
         {overallCategory === "Highly Obedient" && (
           <p>Your responses indicate a strong tendency to follow authority, aligning with the majority of Milgram's participants who obeyed even under morally questionable conditions.</p>
         )}
@@ -235,10 +251,12 @@ const ResultsPage = () => {
       </div>
 
       <div style={styles.card}>
-        <h2>Closest Historical Profile</h2>
+        <h2 className="love-ya-like-a-sister-regular">Closest Historical Profile</h2>
         {closestProfile ? (
           <>
-            <p><strong>Closest Match:</strong> {closestProfile.name}</p>
+            <p>
+              <span style={{ fontWeight: 'bold' }}>Closest Match:</span> {closestProfile.name}
+            </p>
             <p>{closestProfile.description}</p>
             <h3>Why You Match This Profile</h3>
             <div
@@ -251,8 +269,9 @@ const ResultsPage = () => {
           <p>No closely matching historical profile found.</p>
         )}
     </div>
+    </div>
 
-      {Object.keys(categories).map((category, index) => {
+      {/* {Object.keys(categories).map((category, index) => {
         const score = calculateCategoryScore(category);
         const level = score > 3 ? "High" : score > 2 ? "Moderate" : "Low";
 
@@ -266,23 +285,46 @@ const ResultsPage = () => {
             <p><strong>Level:</strong> {level}</p>
             <p>{categoryInsight}</p>
             <div style={styles.progressBar}>
-              <div style={{ ...styles.progressFill, width: `${(score / 4) * 100}%` }}></div>
+              <div style={{ ...styles.progressFill, 
+                            width: `${(score / 4) * 100}%` 
+                          }}>
+              </div>
             </div>
           </div>
         );
-      })}
+      })} */}
+
+<CategoryCards
+        categories={categories}
+        calculateCategoryScore={calculateCategoryScore}
+        insights={insights}
+      />
 
     </div>
   );
 };
 
 const styles = {
+  sideBySideContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: "20px",
+    margin: "0 auto", // Centers the container horizontally
+    width: "90%", // Adjust the width as needed
+    maxWidth: "1200px", // Ensure it doesn't stretch too much on large screens
+    gap: "20px",
+  },
   container: {
     textAlign: 'center',
     padding: '20px',
     backgroundColor: '#121212',
     color: '#e0e0e0',
-    minHeight: '100vh',
+    minHeight: '100vh', // Ensures it covers at least the viewport height
+    height: 'auto', // Allows it to grow as content expands
+    backgroundRepeat: 'repeat',
+    backgroundSize: 'auto',
+    backgroundPosition: 'top left',
   },
   card: {
     backgroundColor: '#1e1e1e',
