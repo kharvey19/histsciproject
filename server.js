@@ -22,17 +22,35 @@ db.serialize(() => {
       q7 TEXT,
       q8 TEXT,
       q9 TEXT,
-      q10 TEXT
+      q10 TEXT,
+      q11 TEXT,
+      q12 TEXT,
+      q13 TEXT,
+      q14 TEXT,
+      q15 TEXT,
+      q16 TEXT,
+      q17 TEXT,
+      q18 TEXT,
+      q19 TEXT,
+      q20 TEXT,
+      q21 TEXT,
+      q22 TEXT,
+      q23 TEXT,
+      q24 TEXT,
+      q25 TEXT
     )
   `);
 });
 
 app.post('/api/survey', (req, res) => {
   const { name, responses } = req.body;
+
   const values = [name, ...Object.values(responses)];
   db.run(
-    `INSERT INTO survey_responses (name, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO survey_responses(name, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, 
+                                         q11, q12, q13, q14, q15, q16, q17, q18, q19, q20,
+                                         q21, q22, q23, q24, q25)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     values,
     (err) => {
       if (err) {
@@ -50,13 +68,15 @@ app.listen(5000, () => {
 });
 
 app.get('/api/survey/last', (req, res) => {
-  const query = 'SELECT * FROM survey_responses ORDER BY id DESC LIMIT 1'; // Fetch the last row
+  const query = 'SELECT * FROM survey_responses ORDER BY id DESC LIMIT 1';
   db.get(query, (err, row) => {
     if (err) {
       console.error(err);
       res.status(500).send('Error fetching last survey data');
     } else {
-      res.json(row);
+      console.log('Server Data:', row); // Log the fetched row
+      res.json(row || {}); // Send an empty object if no data
     }
   });
 });
+

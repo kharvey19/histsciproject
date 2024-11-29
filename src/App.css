@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.love-ya-like-a-sister-regular {
+  font-family: "Love Ya Like A Sister", cursive;
+  font-weight: 400;
+  font-style: normal;
+  /* font-size: 70px; */
+}
+
+.funnel-sans-light {
+  font-family: "Funnel Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+.background-container {
+  background-image: url('/Users/katherineharvey/Desktop/histsci/public/milgirim_background.jpg'); /* Path to your image */
+  background-size: cover; /* Ensures the image covers the entire container */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-position: center; /* Centers the image */
+  height: 100vh; /* Sets the height to fill the viewport */
+  width: 100%; /* Makes it span the entire width */
+}
+

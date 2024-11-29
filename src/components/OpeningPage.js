@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '/Users/katherineharvey/Desktop/histsci/src/App.css'; 
 
 const OpeningPage = () => {
   const [name, setName] = useState('');
@@ -15,22 +16,23 @@ const OpeningPage = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className="background-container">
       <div style={styles.card}>
-        <h1 style={styles.title}>Welcome to the Obedience to Authority Survey</h1>
-        <p style={styles.description}>
-          This survey is inspired by Stanley Milgram's famous obedience experiments. 
-          You'll explore how authority might influence your decisions in challenging scenarios.
-        </p>
+        <h1 style={styles.title} className="love-ya-like-a-sister-regular">How Obedient to Authority are you?</h1>
+        <p style={styles.description} className="funnel-sans-light" >
+        Curious how your decisions about obedience to authority might have been judged by Milgram in the 1960s? Take this survey to explore how authority could influence your choices in challenging situations!        </p>
           <div style={styles.inputWrapper}>
             <input
+              className="funnel-sans-light"
               type="text"
               placeholder="Enter your name"
               style={styles.input}
+              value={name || ''} // Ensure value is always a string
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
-        <button onClick={handleStart} style={styles.button}>
-          Start Survey
+        <button onClick={handleStart} style={styles.button} className="funnel-sans-light">
+          Test Your Choices!
         </button>
       </div>
     </div>
@@ -53,24 +55,27 @@ const styles = {
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
     textAlign: 'center',
     width: '90%',
-    maxWidth: '500px',
+    maxWidth: '800px',
     display: 'flex',          // Add flexbox
     flexDirection: 'column',  // Arrange children vertically
     alignItems: 'center',     // Center horizontally
   },
   title: {
-    fontSize: '28px',
-    marginBottom: '20px',
+    fontSize: '70px',
+    // marginBottom: '20px',
     color: '#ffffff',
   },
   description: {
-    fontSize: '16px',
-    marginBottom: '20px',
-    color: '#bbbbbb',
+    fontSize: '20px',
+    marginBottom: '50px',
+    marginLeft: '50px',
+    marginRight: '50px',
+    // color: '#bbbbbb',
   },
   inputWrapper: {
     width: '100%',            // Match the width of the parent
-    textAlign: 'center',      // Center-align text inside inputWrapper
+    textAlign: 'center',  
+    marginBottom: '30px',   
   },
   input: {
     width: '100%',            // Full width inside wrapper
@@ -84,13 +89,14 @@ const styles = {
     color: '#e0e0e0',
   },
   button: {
-    padding: '10px 20px',
+    padding: '20px 20px',
     fontSize: '16px',
     color: '#ffffff',
-    backgroundColor: '#007bff',
+    backgroundColor: '#0096c7',
     border: 'none',
-    borderRadius: '4px',
+    borderRadius: '10px',
     cursor: 'pointer',
+    fontWeight: 'bold',
   },
 };
 
