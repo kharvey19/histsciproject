@@ -53,7 +53,7 @@
 
 
 .background-container {
-  background-image: url('/Users/katherineharvey/Desktop/histsci/public/milgirim_background.jpg'); /* Path to your image */
+  background-image: url('./assets/milgirim_background.jpg'); /* Path to your image */
   background-size: auto; /* Keeps the original size of the image */
   background-repeat: repeat; /* Allows the image to tile/repeat */
   background-position: top left; /* Starts the tiling from the top-left corner */
