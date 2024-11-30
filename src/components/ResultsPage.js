@@ -2,6 +2,22 @@ import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import Score from "react-score-indicator";
 import CategoryCards from "./Carousel.js"
+import refuseImage from '../assets/background.jpg';
+import highlyObedientImage from '../assets/obedient.jpg';
+import moderatelyObedientImage from '../assets/mod.jpg';
+import resistantToAuthorityImage from '../assets/resistant.jpg';
+
+// Map categories to images
+const categoryImageMap = {
+  "Highly Obedient": highlyObedientImage,
+  "Moderately Obedient": moderatelyObedientImage,
+  "Resistant to Authority": resistantToAuthorityImage,
+};
+
+function HistoricalProfile({ category }) {
+  const imageSrc = categoryImageMap[category]; // Dynamically get the image for the category
+};
+
 
 const ResultsPage = () => {
   const location = useLocation();
@@ -60,7 +76,7 @@ const ResultsPage = () => {
         moralAutonomy: 2,
         socialProof: 3,
         ethicalAwareness: 2,
-        culturalNorms: 3,
+        culturalNorms: 2,
       },
     },
     {
@@ -215,111 +231,138 @@ const ResultsPage = () => {
   }
 
   return (
-    <div className="background-container" style={styles.container}>
-      {/* <div style={styles.card}> */}
-      <h1 className="love-ya-like-a-sister-regular">Survey Results</h1>
-      <p>Your responses have been analyzed based on Milgram's studies. Here are your results:</p>
-      {/* </div> */}
-      <div style={styles.sideBySideContainer}>
-      <div style={styles.card}>
-        <h2 className="love-ya-like-a-sister-regular">Overall Assessment</h2>
-        {/* <p><strong>Overall Score:</strong> {overallScore.toFixed(2)} / 4</p> */}
-        <p style={{ fontWeight: 'bold'}}>Overall Score </p>
-        <Score
-          value={((overallScore / 4) * 100).toFixed(2)} // Map overall score to percentage
-          maxValue={100}
-          borderWidth={10}
-          gap={15}
-          maxAngle={180}
-          width={160}
-          lineWidth={20}
-        />
+    <div style={styles.container} >
+      <div>
+        <h1 className="love-ya-like-a-sister-regular">Survey Results</h1>
+        <p>Your responses have been analyzed based on Milgram's studies. Here are your results:</p>
+          {/* </div> */}
+          {/* <div style={styles.sideBySideContainer}> */}
+          <div>
+          <div >
+          <div style={styles.card}>
+            <h2 className="love-ya-like-a-sister-regular">Overall Assessment</h2>
+            {/* <p><strong>Overall Score:</strong> {overallScore.toFixed(2)} / 4</p> */}
+            {/* <p style={{ fontWeight: 'bold'}}>Overall Score </p> */}
+            <Score
+              value={((overallScore / 4) * 100).toFixed(2)} // Map overall score to percentage
+              maxValue={100}
+              borderWidth={10}
+              gap={15}
+              maxAngle={180}
+              width={160}
+              lineWidth={20}
+            />
 
-        <p>
-          <span style={{ fontWeight: 'bold' }}>Overall Category:</span> {overallCategory}
-        </p>
+            {/* <p>
+              <span style={{ fontWeight: 'bold' }}>Overall Category:</span> {overallCategory}
+            </p> */}
 
-        {overallCategory === "Highly Obedient" && (
-          <p>Your responses indicate a strong tendency to follow authority, aligning with the majority of Milgram's participants who obeyed even under morally questionable conditions.</p>
-        )}
-        {overallCategory === "Moderately Obedient" && (
-          <p>Your responses suggest a balanced approach, with a tendency to obey authority in some situations while exercising moral judgment in others.</p>
-        )}
-        {overallCategory === "Resistant to Authority" && (
-          <p>Your responses show strong resistance to authority, prioritizing personal values and moral autonomy over compliance. This aligns with the minority of Milgram's participants who defied orders under pressure.</p>
-        )}
-      </div>
+            {overallCategory === "Highly Obedient" && (
+              <p>You have astrong tendency to follow authority! This aligns with the majority of Milgram's participants (around 65%) who continued to administer shocks up to the maximum voltage despite clear signs of distress from the learner.</p>
+            )}
+            {overallCategory === "Moderately Obedient" && (
+              <p>You have a balanced approach when making decisions! You have a tendency to obey authority in some situations while you exercise moral judgment in others.</p>
+            )}
+            {overallCategory === "Resistant to Authority" && (
+              <p>You habve a strong resistance to authority! You prioritize personal values and moral autonomy over compliance. Aka, you stand up for what you believe in!</p>
+            )}
+          </div>
 
-      <div style={styles.card}>
-        <h2 className="love-ya-like-a-sister-regular">Closest Historical Profile</h2>
-        {closestProfile ? (
-          <>
-            <p>
-              <span style={{ fontWeight: 'bold' }}>Closest Match:</span> {closestProfile.name}
-            </p>
-            <p>{closestProfile.description}</p>
-            <h3>Why You Match This Profile</h3>
-            <div
-                dangerouslySetInnerHTML={{
-                  __html: closestProfile.detailedExplanation,
-                }}
+          <div style={styles.card}>
+            <h2 className="love-ya-like-a-sister-regular">Historical Profile: {closestProfile.name}</h2>
+            <div style={{ textAlign: 'center' }}>
+              <img
+                src={categoryImageMap[overallCategory]}
+                alt={`${overallCategory} illustration`}
+                style={styles.image2}
               />
-          </>
-        ) : (
-          <p>No closely matching historical profile found.</p>
-        )}
-    </div>
-    </div>
+            </div>
+            {closestProfile ? (
+              <>
+                {/* <p>
+                  <span style={{ fontWeight: 'bold' }}>Closest Match:</span> {closestProfile.name}
+                </p> */}
+                <p>{closestProfile.description}</p>
+                {/* <h4>Why You Match This Profile</h4> */}
+                {/* <div
+                    dangerouslySetInnerHTML={{
+                      __html: closestProfile.detailedExplanation,
+                    }}
+                  /> */}
+              </>
+            ) : (
+              <p>No closely matching historical profile found.</p>
+            )}
+          </div>
 
-      {/* {Object.keys(categories).map((category, index) => {
-        const score = calculateCategoryScore(category);
-        const level = score > 3 ? "High" : score > 2 ? "Moderate" : "Low";
+          <div style={styles.card}>
+            <h2 className="love-ya-like-a-sister-regular"> Elements that Impact your Obedience to Authority </h2>
 
-        // Safely retrieve insights for the category
-        const categoryInsight = insights[category]?.[level.toLowerCase()] || 
-          "No specific insight available for this category.";
-
-        return (
-          <div key={index} style={styles.card}>
-            <h3>{capitalize(category)}</h3>
-            <p><strong>Level:</strong> {level}</p>
-            <p>{categoryInsight}</p>
-            <div style={styles.progressBar}>
-              <div style={{ ...styles.progressFill, 
-                            width: `${(score / 4) * 100}%` 
-                          }}>
+            <div style={{border: '1px solid black', borderRadius: '8px', marginBottom: '40px' }}>
+              <div style={{ paddingLeft: '20px', paddingBottom: '40px'}}>
+              <CategoryCards
+                      categories={categories}
+                      calculateCategoryScore={calculateCategoryScore}
+                      insights={insights}
+                    />
               </div>
             </div>
           </div>
-        );
-      })} */}
+          
 
-<CategoryCards
-        categories={categories}
-        calculateCategoryScore={calculateCategoryScore}
-        insights={insights}
-      />
+          </div>
+          <div>
+            <img
+              src={refuseImage}
+              alt={`Question  Illustration`}
+              style={styles.image}
+            />
+          </div>
 
+      </div>
+      </div>
     </div>
+
+
   );
 };
 
+
 const styles = {
+  image: {
+    width: '100%', // Let the image take up full width of its container
+    maxWidth: '700px', // Maximum width for the image
+    height: 'auto', // Maintain aspect ratio
+    objectFit: 'contain', // Prevent distortion
+    borderRadius: '4px',
+    marginBottom: '100px',
+  },
+  image2: {
+    width: '100%', // Let the image take up full width of its container
+    maxWidth: '300px', // Maximum width for the image
+    height: 'auto', // Maintain aspect ratio
+    objectFit: 'contain', // Prevent distortion
+    borderRadius: '4px',
+
+
+  }, 
   sideBySideContainer: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "flex-start",
+    // alignItems: 'stretch', // Ensures equal height for children
+    // gap: '20px', // Space between the cards
+    alignItems: "stretch",
     marginBottom: "20px",
     margin: "0 auto", // Centers the container horizontally
     width: "90%", // Adjust the width as needed
     maxWidth: "1200px", // Ensure it doesn't stretch too much on large screens
-    gap: "20px",
+    gap: "40px",
   },
   container: {
     textAlign: 'center',
     padding: '20px',
-    backgroundColor: '#121212',
-    color: '#e0e0e0',
+    backgroundColor: '#dbe7e4',
+    color: 'black',
     minHeight: '100vh', // Ensures it covers at least the viewport height
     height: 'auto', // Allows it to grow as content expands
     backgroundRepeat: 'repeat',
@@ -327,13 +370,14 @@ const styles = {
     backgroundPosition: 'top left',
   },
   card: {
-    backgroundColor: '#1e1e1e',
-    padding: '15px',
+    backgroundColor: '#dbe7e4',
+    padding: '2px',
     margin: '15px auto',
     borderRadius: '8px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+    // boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
     maxWidth: '600px',
     textAlign: 'left',
+    // border: '1px solid black',
   },
   progressBar: {
     height: '20px',
@@ -350,5 +394,6 @@ const styles = {
     transition: 'width 0.3s ease',
   },
 };
+
 
 export default ResultsPage;

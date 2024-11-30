@@ -64,7 +64,7 @@
 
 
 .surveybutton {
-  background-color: #0096c7; /* Main button color */
+  background-color: white; /* Main button color */
   color: #fff; /* Text color */
   padding: 10px 20px;
   border: none;
@@ -75,9 +75,9 @@
 }
 
 .surveybutton:hover {
-  background-color: rgba(0, 150, 199, 0.8); /* More opaque on hover */
+  background-color: #dae3e5; /* More opaque on hover */
 }
 
 strong {
-  color: #007bff; /* Replace with your desired color */
+  color: #0096c7; /* Replace with your desired color */
 }
