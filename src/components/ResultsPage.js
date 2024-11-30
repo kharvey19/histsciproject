@@ -1,11 +1,12 @@
 import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import Score from "react-score-indicator";
+// import Score from "react-score-indicator";
 import CategoryCards from "./Carousel.js"
 import refuseImage from '../assets/background.jpg';
 import highlyObedientImage from '../assets/obedient.jpg';
 import moderatelyObedientImage from '../assets/mod.jpg';
 import resistantToAuthorityImage from '../assets/resistant.jpg';
+import ScoreMeter from "./Score";
 
 // Map categories to images
 const categoryImageMap = {
@@ -243,7 +244,7 @@ const ResultsPage = () => {
             <h2 className="love-ya-like-a-sister-regular">Overall Assessment</h2>
             {/* <p><strong>Overall Score:</strong> {overallScore.toFixed(2)} / 4</p> */}
             {/* <p style={{ fontWeight: 'bold'}}>Overall Score </p> */}
-            <Score
+            {/* <Score
               value={((overallScore / 4) * 100).toFixed(2)} // Map overall score to percentage
               maxValue={100}
               borderWidth={10}
@@ -251,7 +252,11 @@ const ResultsPage = () => {
               maxAngle={180}
               width={160}
               lineWidth={20}
-            />
+            /> */}
+
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <ScoreMeter value={((overallScore / 4) * 100).toFixed(2)} />
+            </div>
 
             {/* <p>
               <span style={{ fontWeight: 'bold' }}>Overall Category:</span> {overallCategory}
