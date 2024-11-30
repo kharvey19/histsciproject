@@ -4,7 +4,9 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://limitless-earth-51296-7806e27eec8d.herokuapp.com',
+}));
 
 const db = new sqlite3.Database('./survey.db');
 

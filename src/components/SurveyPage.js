@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const BASE_URL = "https://limitless-earth-51296-7806e27eec8d.herokuapp.com"; // Your Heroku app URL
+
+
 const SurveyPage = () => {
   const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -137,16 +140,16 @@ const SurveyPage = () => {
       console.log('Final Responses:', updatedResponses); // Debugging log
   
       try {
-        await fetch('http://localhost:5000/api/survey', {
+        await fetch(`${BASE_URL}/api/survey`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             name: localStorage.getItem('userName') || 'Anonymous',
-            responses: updatedResponses, // Ensure the last response is included
+            responses: updatedResponses,
           }),
-        });
+        });        
         navigate('/results', { state: { responses: updatedResponses } }); // Navigate to ResultsPage
       } catch (error) {
         console.error('Error submitting survey responses:', error);

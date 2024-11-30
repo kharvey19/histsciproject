@@ -8,6 +8,9 @@ import moderatelyObedientImage from '../assets/mod.jpg';
 import resistantToAuthorityImage from '../assets/resistant.jpg';
 import ScoreMeter from "./Score";
 
+const BASE_URL = "https://limitless-earth-51296-7806e27eec8d.herokuapp.com"; // Your Heroku app URL
+
+
 // Map categories to images
 const categoryImageMap = {
   "Highly Obedient": highlyObedientImage,
@@ -103,7 +106,7 @@ const ResultsPage = () => {
     if (!responses) {
       const fetchLastSurveyData = async () => {
         try {
-          const res = await fetch('http://localhost:5000/api/survey/last');
+          const res = await fetch(`${BASE_URL}/api/survey/last`);
           const data = await res.json();
           setResponses(data);
           setLoading(false);
@@ -112,6 +115,7 @@ const ResultsPage = () => {
           setLoading(false);
         }
       };
+      
       fetchLastSurveyData();
     }
   }, [responses]);
