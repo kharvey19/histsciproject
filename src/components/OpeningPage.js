@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '/Users/katherineharvey/Desktop/histsci/src/App.css'; 
+import './App.css'; 
 
 const OpeningPage = () => {
   const [name, setName] = useState('');
