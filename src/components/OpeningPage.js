@@ -9,7 +9,7 @@ const OpeningPage = () => {
   const handleStart = () => {
     if (name) {
       localStorage.setItem('userName', name); // Save user name to localStorage
-      navigate('/survey');
+      navigate('/intro');
     } else {
       alert('Please enter your name to proceed.');
     }

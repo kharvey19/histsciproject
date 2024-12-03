@@ -186,6 +186,23 @@ const ResultsPage = () => {
     return "Resistant to Authority";
   };
 
+  const findMostInfluentialCategory = () => {
+    let maxScore = 0;
+    let mostInfluentialCategory = '';
+  
+    Object.keys(categories).forEach((category) => {
+      const categoryScore = calculateCategoryScore(category) * (categoryWeights[category] || 1); // Weighted score
+      if (categoryScore > maxScore) {
+        maxScore = categoryScore;
+        mostInfluentialCategory = category;
+      }
+    });
+  
+    return mostInfluentialCategory;
+  };
+
+  const mostInfluentialCategory = findMostInfluentialCategory();
+
   const overallCategory = getOverallCategory(overallScore);
 
   const insights = {
@@ -258,6 +275,8 @@ const ResultsPage = () => {
               lineWidth={20}
             /> */}
 
+            <p>Your percentage shows how much your decisions align with obedience traits. Higher scores mean a stronger tendency to follow authority, while lower scores reflect greater moral autonomy.</p>
+            
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <ScoreMeter value={((overallScore / 4) * 100).toFixed(2)} />
             </div>
@@ -267,14 +286,43 @@ const ResultsPage = () => {
             </p> */}
 
             {overallCategory === "Highly Obedient" && (
-              <p>You have astrong tendency to follow authority! This aligns with the majority of Milgram's participants (around 65%) who continued to administer shocks up to the maximum voltage despite clear signs of distress from the learner.</p>
+              <p>Your results show that you have astrong tendency to follow authority! This aligns with the majority of Milgram's participants (around 65%) who continued to administer shocks up to the maximum voltage despite clear signs of distress from the learner.</p>
             )}
             {overallCategory === "Moderately Obedient" && (
-              <p>You have a balanced approach when making decisions! You have a tendency to obey authority in some situations while you exercise moral judgment in others.</p>
+              <p>Your results show that you have a balanced approach when making decisions! You have a tendency to obey authority in some situations while you exercise moral judgment in others.</p>
             )}
             {overallCategory === "Resistant to Authority" && (
-              <p>You habve a strong resistance to authority! You prioritize personal values and moral autonomy over compliance. Aka, you stand up for what you believe in!</p>
+              <p>Your results show that you habve a strong resistance to authority! You prioritize personal values and moral autonomy over compliance. Aka, you stand up for what you believe in!</p>
             )}
+          </div>
+
+          <div style={styles.card}>
+            <h2 className="love-ya-like-a-sister-regular">Your Most Influential Element</h2>
+            {mostInfluentialCategory ? (
+              <>
+                <p>
+                  <span style={{ fontWeight: 'bold'}}>{capitalize(mostInfluentialCategory)}: </span> 
+                  {insights[mostInfluentialCategory]?.high}
+                </p>
+              </>
+            ) : (
+              <p>Unable to determine the most influential element at this time.</p>
+            )}
+          </div>
+
+
+          <div style={styles.card}>
+            <h2 className="love-ya-like-a-sister-regular"> Elements that Impact your Obedience to Authority </h2>
+
+            <div style={{border: '1px solid black', borderRadius: '8px', marginBottom: '40px' }}>
+              <div style={{ paddingLeft: '20px', paddingBottom: '40px'}}>
+              <CategoryCards
+                      categories={categories}
+                      calculateCategoryScore={calculateCategoryScore}
+                      insights={insights}
+                    />
+              </div>
+            </div>
           </div>
 
           <div style={styles.card}>
@@ -286,6 +334,7 @@ const ResultsPage = () => {
                 style={styles.image2}
               />
             </div>
+
             {closestProfile ? (
               <>
                 {/* <p>
@@ -302,20 +351,6 @@ const ResultsPage = () => {
             ) : (
               <p>No closely matching historical profile found.</p>
             )}
-          </div>
-
-          <div style={styles.card}>
-            <h2 className="love-ya-like-a-sister-regular"> Elements that Impact your Obedience to Authority </h2>
-
-            <div style={{border: '1px solid black', borderRadius: '8px', marginBottom: '40px' }}>
-              <div style={{ paddingLeft: '20px', paddingBottom: '40px'}}>
-              <CategoryCards
-                      categories={categories}
-                      calculateCategoryScore={calculateCategoryScore}
-                      insights={insights}
-                    />
-              </div>
-            </div>
           </div>
           
 
