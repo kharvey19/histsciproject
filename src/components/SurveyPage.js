@@ -18,8 +18,8 @@ const SurveyPage = () => {
 
     window.addEventListener("resize", handleResize);
 
-     // Ensure the page opens at the top
-     window.scrollTo(0, 0);
+    // Ensure the page opens at the top
+    window.scrollTo(0, 0);
 
     // Cleanup the event listener on unmount
     return () => window.removeEventListener("resize", handleResize);
@@ -30,10 +30,10 @@ const SurveyPage = () => {
       fontSize: "35px",
     },
     text: {
-      fontSize: isLargeScreen ? "25px": "20px",
+      fontSize: isLargeScreen ? "25px" : "20px",
       marginLeft: "40px",
       marginRight: "40px",
-      marginBottom: isLargeScreen ? "45px": "20px",
+      marginBottom: isLargeScreen ? "45px" : "20px",
       color: "black",
       textAlign: "center",
       fontWeight: "bold",
@@ -76,13 +76,13 @@ const SurveyPage = () => {
       borderRadius: "8px",
       marginRight: isLargeScreen ? "10px" : "0",
       marginLeft: isLargeScreen ? "120px" : "0",
-      marginTop: isLargeScreen ? "60px": "10px",
+      marginTop: isLargeScreen ? "60px" : "10px",
       marginBottom: isLargeScreen ? "50px" : "0",
     },
     image: {
       maxWidth: "80%",
       borderRadius: "8px",
-      marginTop: isLargeScreen ? "20px": "0",
+      marginTop: isLargeScreen ? "20px" : "0",
     },
     rightSection: {
       flex: 1,
@@ -96,12 +96,12 @@ const SurveyPage = () => {
       borderRadius: "8px",
       marginRight: isLargeScreen ? "100px" : "0",
       marginLeft: isLargeScreen ? "20px" : "0",
-      marginTop: isLargeScreen ? "60px": "0",
+      marginTop: isLargeScreen ? "60px" : "0",
       marginBottom: "50px",
     },
     button: {
       margin: "10px",
-      padding: isLargeScreen ? "22px 30px": "10px 10px",
+      padding: isLargeScreen ? "22px 30px" : "10px 10px",
       color: "black",
       border: "1px solid black",
       borderRadius: "5px",
@@ -303,7 +303,6 @@ const SurveyPage = () => {
       ...responses,
       [`q${questions[currentQuestionIndex].id}`]: answer, // Add the current answer
     };
-    
 
     setResponses(updatedResponses); // Update the state
 
@@ -324,7 +323,7 @@ const SurveyPage = () => {
             responses: updatedResponses,
           }),
         });
-        
+
         navigate("/results", { state: { responses: updatedResponses } }); // Navigate to ResultsPage
       } catch (error) {
         console.error("Error submitting survey responses:", error);
@@ -335,13 +334,12 @@ const SurveyPage = () => {
   return (
     <div styles={{ color: "#e0e0e0" }}>
       <div style={styles.progressBarContainer}>
-      <div
-  style={{
-    ...styles.progressBar,
-    width: `${((currentQuestionIndex + 1) / questions.length) * 100}%`, // Corrected with backticks
-  }}
-/>
-
+        <div
+          style={{
+            ...styles.progressBar,
+            width: `${((currentQuestionIndex + 1) / questions.length) * 100}%`, // Corrected with backticks
+          }}
+        />
       </div>
       <div
         style={{

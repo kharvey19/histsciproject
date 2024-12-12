@@ -50,7 +50,7 @@ const ResultsPage = () => {
       detailedExplanation:
         "This profile highlights how soldiers might follow orders without questioning authority, even when it goes against their personal morals. In this case, obedience to authority and peer pressure play a key role. High <strong>obedience</strong> and low <strong>moral autonomy</strong> are key characteristics, meaning the individual will prioritize authority over their own ethical compass, just as many Milgram participants did. Social proof and the group dynamic strongly influence their decisions, similar to how Milgram's participants often followed the experimenter's orders because they saw others doing the same.",
       threshold: 67,
-      img:  highlyObedientImage,
+      img: highlyObedientImage,
     },
     {
       name: "The Moderate Soldier",
@@ -68,11 +68,9 @@ const ResultsPage = () => {
       detailedExplanation:
         "Individuals in this profile demonstrate a high level of <strong>moral autonomy</strong> and resistance to authority, willing to act according to their personal ethical standards rather than conforming to orders. Their <strong>low obedience</strong> and high <strong>ethical awareness</strong> indicate that they would resist authority figures if the orders conflicted with their moral values. They refuse to defer responsibility to authority and instead focus on their personal responsibility, reflecting the actions of the minority of Milgram participants who chose to disobey authority despite the social pressure to conform.",
       threshold: 0,
-      img: resistantToAuthorityImage
+      img: resistantToAuthorityImage,
     },
   ];
-
-
 
   useEffect(() => {
     if (!responses) {
@@ -147,7 +145,7 @@ const ResultsPage = () => {
     }
     return null;
   };
-  
+
   const overallScore = calculateOverallScore();
   const closestProfile = findClosestProfile(overallScore);
 

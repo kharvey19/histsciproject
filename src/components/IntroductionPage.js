@@ -83,6 +83,17 @@ const IntroductionPage = () => {
           conflicts with their personal values.
           <br />
           <br />
+          Want to learn more about Milgrim's experiement? <a
+  href="https://youtu.be/vuMt8b4UrcI?si=V02WC0NvwB44ritc"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{ color: "#0096c7" }}
+>
+  Click Here!
+</a>
+
+          <br />
+          <br />
           This survey explores similar ideas, like how fear, social pressure,
           and moral independence shape decision-making. By answering a few
           questions, you’ll get a better understanding of how these factors
