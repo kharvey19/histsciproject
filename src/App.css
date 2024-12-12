@@ -44,11 +44,49 @@
   /* font-size: 70px; */
 }
 
+.playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.eb {
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.georgia {
+  font-family: Georgia, Times, 'Times New Roman', serif;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+  text-transform: none;
+  /* color: #ffffff; */
+  }
+
+.open{
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
 .funnel-sans-light {
   font-family: "Funnel Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+}
+
+a {
+  color: blue; /* Default link color */
+  text-decoration: none; /* Optional: Removes underline */
+}
+
+a:visited {
+  color: blue; /* Same as unclicked links */
 }
 
 

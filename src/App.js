@@ -4,6 +4,8 @@ import OpeningPage from './components/OpeningPage';
 import SurveyPage from './components/SurveyPage';
 import ResultsPage from './components/ResultsPage';
 import IntroductionPage from './components/IntroductionPage';
+import ThankYouPage from "./components/ThankYouPage"; // Adjust the path based on your folder structure
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
         <Route path="/intro" element={<IntroductionPage />} />
         <Route path="/survey" element={<SurveyPage />} />
         <Route path="/results" element={<ResultsPage />} />
+        <Route path="/thank-you" element={<ThankYouPage />} />
       </Routes>
     </Router>
   );
