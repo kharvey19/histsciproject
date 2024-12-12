@@ -10,23 +10,12 @@ import ScoreMeter from "./Score";
 
 const BASE_URL = "https://limitless-earth-51296-7806e27eec8d.herokuapp.com";
 
-// Map categories to images
-const categoryImageMap = {
-  "Highly Obedient": highlyObedientImage,
-  "Moderately Obedient": moderatelyObedientImage,
-  "Resistant to Authority": resistantToAuthorityImage,
-};
-
-function HistoricalProfile({ category }) {
-  const imageSrc = categoryImageMap[category]; // Dynamically get the image for the category
-}
-
 const ResultsPage = () => {
   const navigate = useNavigate();
   const [showExplanation, setShowExplanation] = useState(false);
 
   const toggleExplanation = () => {
-    setShowExplanation((prev) => !prev); // Toggle between true and false
+    setShowExplanation((prev) => !prev);
   };
 
   const location = useLocation();
@@ -55,22 +44,22 @@ const ResultsPage = () => {
 
   const historicalProfiles = [
     {
-      // name: "Nazi Germany Soldier",
       name: "The Obedient Soldier",
       description:
         "This profile reflects high obedience, strong deferral of responsibility (agentic state), and low moral autonomy, similar to many soldiers in Nazi Germany who justified harmful actions as 'just following orders.' Soldiers in this group are influenced by the authority of their commanders, peer pressure, and social proof, which allow them to follow orders even when those orders lead to ethically questionable actions.",
       detailedExplanation:
         "This profile highlights how soldiers might follow orders without questioning authority, even when it goes against their personal morals. In this case, obedience to authority and peer pressure play a key role. High <strong>obedience</strong> and low <strong>moral autonomy</strong> are key characteristics, meaning the individual will prioritize authority over their own ethical compass, just as many Milgram participants did. Social proof and the group dynamic strongly influence their decisions, similar to how Milgram's participants often followed the experimenter's orders because they saw others doing the same.",
       threshold: 67,
+      img:  highlyObedientImage,
     },
     {
       name: "The Moderate Soldier",
-      // name: "My Lai Massacre Soldier",
       description:
         "This profile highlights obedience driven by fear, coercion, and social proof, similar to U.S. soldiers in the Vietnam War who followed orders to carry out civilian massacres. These soldiers were under intense stress and social pressure, leading them to comply with immoral orders. Some of them experienced moral conflict but succumbed to the overwhelming influence of authority and fear of punishment or rejection.",
       detailedExplanation:
         "Soldiers in this profile were pressured into obedience due to <strong>fear</strong> of consequences, <strong>coercion</strong>, and the <strong>social proof</strong> of their peers. This mirrors the findings from Milgram's study, where participants were more likely to obey when they feared punishment or were reassured by the experimenter's authority. Although these soldiers did show some level of <strong>moral conflict</strong>, they ultimately prioritized obedience and fear of retribution over their ethical concerns. Their <strong>moderate obedience</strong> and <strong>moderate moral autonomy</strong> make them more susceptible to authority in stressful situations.",
       threshold: 34,
+      img: moderatelyObedientImage,
     },
     {
       name: "The Resistor",
@@ -79,8 +68,11 @@ const ResultsPage = () => {
       detailedExplanation:
         "Individuals in this profile demonstrate a high level of <strong>moral autonomy</strong> and resistance to authority, willing to act according to their personal ethical standards rather than conforming to orders. Their <strong>low obedience</strong> and high <strong>ethical awareness</strong> indicate that they would resist authority figures if the orders conflicted with their moral values. They refuse to defer responsibility to authority and instead focus on their personal responsibility, reflecting the actions of the minority of Milgram participants who chose to disobey authority despite the social pressure to conform.",
       threshold: 0,
+      img: resistantToAuthorityImage
     },
   ];
+
+
 
   useEffect(() => {
     if (!responses) {
@@ -147,19 +139,15 @@ const ResultsPage = () => {
   };
 
   const findClosestProfile = (overallScore) => {
-    let closestProfile = null;
-
+    const score = (overallScore / 4) * 100;
     for (const profile of historicalProfiles) {
-      // Check thresholds in ascending order
-      if (overallScore <= profile.threshold) {
-        closestProfile = profile;
-        break;
+      if (score >= profile.threshold) {
+        return profile;
       }
     }
-
-    return closestProfile;
+    return null;
   };
-
+  
   const overallScore = calculateOverallScore();
   const closestProfile = findClosestProfile(overallScore);
 
@@ -411,7 +399,7 @@ const ResultsPage = () => {
               </h2>
               <div style={{ textAlign: "center" }}>
                 <img
-                  src={categoryImageMap[overallCategory]}
+                  src={closestProfile.img}
                   alt={`${overallCategory} illustration`}
                   style={styles.image2}
                 />
