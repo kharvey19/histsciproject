@@ -18,6 +18,9 @@ const SurveyPage = () => {
 
     window.addEventListener("resize", handleResize);
 
+     // Ensure the page opens at the top
+     window.scrollTo(0, 0);
+
     // Cleanup the event listener on unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);

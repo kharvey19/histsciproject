@@ -17,6 +17,9 @@ const ThankYouPage = () => {
 
     window.addEventListener("resize", handleResize);
 
+    // Ensure the page opens at the top
+    window.scrollTo(0, 0);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -110,6 +113,7 @@ const ThankYouPage = () => {
           </p>
           <img
             src={require("../assets/happy.jpg")}
+            alt=""
             style={{
               width: "100%",
               maxWidth: "400px",
