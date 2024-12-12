@@ -26,8 +26,7 @@ const IntroductionPage = () => {
       alignItems: "center",
       minHeight: "100vh",
       backgroundColor: "#121212",
-      color: "#e0e0e0",
-      padding: "20px", // Added padding for better spacing on small screens
+      padding: "20px",
     },
     card: {
       backgroundColor: "#1e1e1e",
@@ -37,27 +36,29 @@ const IntroductionPage = () => {
       textAlign: "center",
       width: "90%",
       maxWidth: "800px",
+      maxHeight: isLargeScreen ? "none" : "70vh", // No height restriction on large screens
+      overflowY: isLargeScreen ? "visible" : "auto", // Enable scrolling only for small screens
+      boxSizing: "border-box",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      boxSizing: "border-box", // Ensure padding doesn't affect total size
-
     },
     title: {
-      fontSize: isLargeScreen ? "70px" : "40px", // Dynamic title size
+      fontSize: isLargeScreen ? "70px" : "40px",
       color: "#ffffff",
       marginBottom: "20px",
       marginTop: "20px",
     },
     description: {
-      fontSize: isLargeScreen ? "20px" : "16px", // Dynamic description size
+      fontSize: isLargeScreen ? "18px" : "16px",
       marginBottom: isLargeScreen ? "50px" : "30px",
       marginLeft: "20px",
       marginRight: "20px",
-      lineHeight: "1.6", // Improved readability
+      lineHeight: "1.6",
+      color: "white",
     },
     button: {
-      padding: isLargeScreen ? "20px 40px" : "15px 30px", // Dynamic button size
+      padding: isLargeScreen ? "20px 40px" : "15px 30px",
       fontSize: isLargeScreen ? "16px" : "14px",
       color: "#ffffff",
       backgroundColor: "#0096c7",

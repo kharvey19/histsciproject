@@ -46,7 +46,6 @@ const OpeningPage = () => {
       flexDirection: "column",
       alignItems: "center",
       margin: isLargeScreen ? "70px" : "normal", // Adjust font size dynamically
-
     },
     title: {
       fontSize: isLargeScreen ? "70px" : "40px", // Adjust font size dynamically
