@@ -40,6 +40,8 @@ const IntroductionPage = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      boxSizing: "border-box", // Ensure padding doesn't affect total size
+
     },
     title: {
       fontSize: isLargeScreen ? "70px" : "40px", // Dynamic title size

@@ -64,7 +64,11 @@
   text-transform: none;
   /* color: #ffffff; */
   }
-
+  
+  * {
+    box-sizing: border-box;
+  }
+  
 .open{
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
