@@ -6,8 +6,9 @@
 # HISTSCI 1740 Project: Obedience to Authority Survey
 
 
-This project is a React-based web application designed to simulate Stanley Milgram's famous obedience experiments. The survey explores participants' tendencies to obey authority and their moral decision-making in challenging scenarios. The app dynamically evaluates user responses and provides insights inspired by Milgram's studies.
+This project is a React-based web application inspired by Stanley Milgram's renowned obedience experiments. It simulates ethical dilemmas to explore how individuals navigate authority, fear, and moral decision-making in challenging scenarios. By evaluating user responses and providing dynamic feedback, the app offers insights rooted in Milgram's studies while drawing connections to modern-day behavior. It highlights how obedience, social pressure, and moral autonomy continue to shape decisions in everyday life, from workplace dynamics to societal challenges, fostering a deeper understanding of these enduring psychological mechanisms.
 
+👉 **[Visit the deployed web app here](https://limitless-earth-51296-7806e27eec8d.herokuapp.com/)**
 
 ## **Features**
 
@@ -16,8 +17,9 @@ This project is a React-based web application designed to simulate Stanley Milgr
    - Responses are recorded and dynamically analyzed.
 
 2. **Dynamic Insights**:
-   - Results page categorizes the user based on Milgram's perspective.
-   - Visual progress bars and detailed insights for each category are displayed.
+   - Users are categorized into profiles such as "Highly Obedient," "Moderately Obedient," or "Resistant to Authority," reflecting their tendencies toward obedience, moral autonomy, and decision-making under authority.
+   - Users are provided scores for how much traits like obedience, fear of authority, and ethical awareness affect their obedience to authority (as well as their most influential element!)
+   - Each feature is accompanied by detailed insights that explain the user’s results and connect their behavior to historical contexts, such as soldiers who followed orders under pressure or individuals who resisted authority during pivotal moments in history.
 
 ## **Installation**
 
