@@ -1,8 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-// import Score from "react-score-indicator";
 import CategoryCards from "./Carousel.js";
-import refuseImage from "../assets/background.jpg";
 import highlyObedientImage from "../assets/obedient.jpg";
 import moderatelyObedientImage from "../assets/mod.jpg";
 import resistantToAuthorityImage from "../assets/resistant.jpg";

@@ -78,7 +78,7 @@ function CategoryCards({ categories, calculateCategoryScore, insights }) {
       maxWidth: "600px",
       textAlign: "left",
       minHeight: "300px", // Set a minimum height for consistent size
-      height: isLargeScreen ? "350px" : "400px",
+      height: isLargeScreen ? "350px" : "450px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between", // Distribute content evenly
