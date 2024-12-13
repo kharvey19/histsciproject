@@ -20,6 +20,7 @@ This project is a React-based web application inspired by Stanley Milgram's reno
    - Users are categorized into profiles such as "Highly Obedient," "Moderately Obedient," or "Resistant to Authority," reflecting their tendencies toward obedience, moral autonomy, and decision-making under authority.
    - Users are provided scores for how much traits like obedience, fear of authority, and ethical awareness affect their obedience to authority (as well as their most influential element!)
    - Each feature is accompanied by detailed insights that explain the user’s results and connect their behavior to historical contexts, such as soldiers who followed orders under pressure or individuals who resisted authority during pivotal moments in history.
+3. **Works on Mobile!!**
 
 ## **Installation**
 
